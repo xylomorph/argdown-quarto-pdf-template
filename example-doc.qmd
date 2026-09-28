@@ -1,0 +1,62 @@
+---
+author: "John Doe"
+email: "john.doe@example-university.com"
+organization: "University of Example"
+institute: "Department of Philosophy"
+course: "Philosophy 101"
+term: "Summer 2024"
+date: "2024-06-01"
+title: "Title"
+---
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+## Macrostructure of the Argumentation
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+```argdown-map
+[Claim]: Claim that is supported and attacked by other arguments. 
+    + <1st Argument>: Argument supporting the main claim. #pro
+    + <2nd Argument>: Another argument supporting the main claim. #pro
+    - <Objection>: Argument attacking the main claim. #con
+        - <Refutation>: Argument attacking the objection. #pro
+``` 
+
+## Reconstruction of the First Argument
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+> At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua [@cho_tax_2023, p. 33].
+
+In the following, we will reconstruct the first argument in a formal way:^[Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.] 
+
+```argdown
+<1st Argument>: Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. #pro
+
+(1) At vero eos et accusam et justo duo dolores et ea rebum.
+    // ∀xy: Mx.Sxy → Gy
+    // Mx: x ist Mensch
+    // Sxy: x strebt y an
+    // Gy: y ist "das" Gute
+(2) Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+	sit amet.
+    // ∀xyz: Mx.Sxy.Ezy → Ryz
+    // Ryz: y ist auf z hingerichtet
+    // Ezy: z ist der Erfüllung von y
+-- from 1-3 with logical magic --
+(5) Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+	eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+	voluptua.
+   // ∀xy: Mx.Sxy → Rya
+```
+
+*Validity proof:*
+
+1. ∀xy: Mx.Sxy → Gy
+2. ∀x: Gx → Eax
+3. **Hence** *(transitivity):* ∀xy: Mx.Sxy → Eay
+4. ∀xyz: Mx.Sxy.Ezy → Ryz
+5. **Hence**: ∀xy: Mx.Sxy → Rya.
