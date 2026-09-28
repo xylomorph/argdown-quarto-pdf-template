@@ -1,0 +1,21 @@
+{
+  "webComponent": {
+    "withoutHeader": true,
+    "views": {
+      "source": true,
+      "map": false
+    }
+  },
+  "sourceHighlighter": {
+    "removeFrontMatter": true
+  },
+  "color": {
+    "tagColors": {
+      "con": "#FA9EAC",
+      "pro": "#C5DF9F"
+    }
+  },
+  "model": {
+    "removeTagsFromText": true
+  }
+}

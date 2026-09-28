@@ -1,0 +1,116 @@
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox} % Must load after graphicx
+% Search for images relative to project root at depth 0 (root), 1 (content/), and 2 (content/sub/)
+\graphicspath{{assets/images/}{../assets/images/}{../../assets/images/}}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+%\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
+%\setmainfont{P052}
+\usepackage[a4paper, top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=60pt, headsep=8pt, footskip=1.5cm]{geometry}
+% Configure Inkscape conversion for SVG images
+% Disable LaTeX text rendering to prevent duplicate text with different fonts
+\AtBeginDocument{%
+  \ifdefined\svgsetup
+    \svgsetup{%
+      inkscapelatex=false%
+    }%
+  \fi
+}
+% Center all images by default using adjustbox
+\adjustboxset{max width=\textwidth, center}
+% Redefine pandocbounded to center images
+\makeatletter
+\AtBeginDocument{%
+  \ifdefined\pandocbounded
+    \renewcommand*\pandocbounded[1]{% scales image to fit in text height/width and centers
+      \vspace{12pt}%
+      \sbox\pandoc@box{#1}%
+      \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+      \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+      \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi%
+      \ifdim\@tempa\p@<\p@%
+        \centerline{\scalebox{\@tempa}{\usebox\pandoc@box}}%
+      \else%
+        \centerline{\usebox{\pandoc@box}}%
+      \fi%
+      \vspace{12pt}%
+    }%
+  \fi
+}
+\makeatother
+\newlength{\handoutlogooffset}
+\AtBeginDocument{%
+  \newlength{\handoutcapht}%
+  \settoheight{\handoutcapht}{\small A}%
+  \setlength{\handoutlogooffset}{\dimexpr1.2cm-\handoutcapht\relax}%
+}
+% style for Argdown codeblocks
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{xcolor}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\mdfdefinestyle{codedefault}{%
+backgroundcolor=black!4,
+roundcorner=2pt,
+linecolor=black!30,
+linewidth=0.5pt,
+leftmargin=10, rightmargin=10,
+rightline=true,
+innerleftmargin=10,innerrightmargin=10}
+% redefining the Shaded-Environment of the pandoc-template to allow customised
+% style-settings
+% Must run at \begin{document} because pandoc defines Shaded after include-in-header
+\AtBeginDocument{%
+  \ifdefined\Shaded
+    \renewenvironment{Shaded}{\vspace{12pt}\centering \begin{mdframed}[style=codedefault]}{\end{mdframed}}%
+  \else
+    \newenvironment{Shaded}{\vspace{12pt}\centering \begin{mdframed}[style=codedefault]}{\end{mdframed}}%
+  \fi
+}
+
+% Adjust fontsize for code-blocks if necessary (by redefining the
+% Highlighting-Environment of the pandoc-template)
+%\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\small}
+
+% Style inline code blocks (backticks) similar to HTML output
+% Adds light gray background with minimal padding around inline code
+\definecolor{inlinecodebg}{RGB}{245,245,245}
+\makeatletter
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{%
+  \begingroup%
+  \setlength{\fboxsep}{1pt}% Minimal padding
+  \colorbox{inlinecodebg}{\oldtexttt{#1}}%
+  \endgroup%
+}
+\makeatother
+
+% Customize quote environment to have left border like HTML
+\usepackage{etoolbox}
+\mdfdefinestyle{quotestyle}{%
+  linewidth=3pt,
+  linecolor=black!30,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  leftline=true,
+  leftmargin=10pt,              % Indents the mdframed box from the page margin
+  rightmargin=10pt,
+  innerleftmargin=5pt,         % Space between left line and text (negative pulls text closer)
+  innerrightmargin=0pt,
+  innertopmargin=0pt,            % No vertical padding inside frame (line height = content height)
+  innerbottommargin=0pt,
+  skipabove=0pt,                 % No extra spacing (using \vspace instead)
+  skipbelow=0pt
+}
+% Reset quote environment's built-in indentation and apply mdframed styling
+% Note: LaTeX's quote environment adds ~1.5em left/right margins by default
+% We reset this to 0 so only mdframed's leftmargin controls positioning
+\AtBeginEnvironment{quote}{%
+  \vspace{12pt}%                 % Add space before quote (especially after headers)
+  \setlength{\leftmargini}{0pt}% % Remove quote's default left indentation
+  \setlength{\rightmargin}{0pt}% % Remove quote's default right indentation
+  \begin{mdframed}[style=quotestyle]\color{black!60}% Grey text color
+}
+\AtEndEnvironment{quote}{\end{mdframed}}
