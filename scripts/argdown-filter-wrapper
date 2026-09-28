@@ -1,0 +1,26 @@
+#!/bin/bash
+# Wrapper to call argdown-filter from nvm
+
+set -u
+
+source /usr/share/nvm/init-nvm.sh
+
+if ! nvm use lts/krypton >/dev/null 2>&1; then
+  echo "[argdown-filter] ERROR: could not activate Node lts/krypton via nvm" >&2
+  exit 1
+fi
+
+NODE_PATH="$(command -v node || true)"
+NODE_VERSION="$(node -v 2>/dev/null || echo unknown)"
+FILTER_PATH="$(command -v argdown-filter || true)"
+
+if [ -z "$FILTER_PATH" ]; then
+  echo "[argdown-filter] ERROR: argdown-filter not found in the active nvm environment" >&2
+  exit 1
+fi
+
+echo "[argdown-filter] Using node: ${NODE_PATH} (${NODE_VERSION})" >&2
+echo "[argdown-filter] Using filter: ${FILTER_PATH}" >&2
+echo "[argdown-filter] Arguments: $*" >&2
+
+exec argdown-filter "$@"
