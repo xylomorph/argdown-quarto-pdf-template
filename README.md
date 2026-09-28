@@ -2,8 +2,8 @@
 
 <div align="center">
   <p align="center">
-  📝 <a href="https://sebastiancacean.de/quarto-course-template">Example Quarto File</a>
-  📄 <a href="https://sebastiancacean.de/quarto-course-template">Generated Example PDF Output</a>
+  📝 <a href="https://github.com/xylomorph/argdown-quarto-pdf-template/blob/main/example-doc.qmd">Example Quarto File</a>
+  📄 <a href="https://github.com/xylomorph/argdown-quarto-pdf-template/blob/main/example-doc.pdf">Generated Example PDF Output</a>
   🗒️ <a href="https://sebastiancacean.de/quarto-course-template">Background & Motivation (Blog Post)</a>
  </p>
 </div>
@@ -56,7 +56,7 @@ If you do not have an already installed TeX distribution, you should use [TinyTe
 quarto install tinytex
 ```
 
-in your terminal (e.g. bash on Linux or PowerShell on Windows).^[If these things do not mean anything to you, use Google or you AI assistant as staring point.]
+in your terminal (e.g. bash on Linux or PowerShell on Windows). (If these things do not mean anything to you, use Google or you AI assistant as staring point.)
 
 > [!NOTE]
 > With TinyTex Quarto is able to install needed LaTex dependencies on its own.
@@ -83,7 +83,7 @@ There are several ways to install `node.js` on your operating system. One popula
 + **On Windows:** ["Install Node.js on Windows" on *learn.microsoft.com*](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
 + **On Linux & maxOS:** [https://github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm) 
 
-With `nvm` you can install a specific node version (here `lts/krypton` as example) with^[ (This works with both the Windows and the Linux/macOS version of `nvm`)]
+With `nvm` you can install a specific node version (here `lts/krypton` as example) with
 
 ```bash
 nvm install lts/krypton
@@ -95,9 +95,11 @@ and then activate this version with
 nvm use lts/krypton
 ```
 
+This works with both the Windows and the Linux/macOS version of `nvm`.
+
 Once `node.js` is installed (and active), you can install all needed Argdown packages. I recommend installing them locally as project dependencies (for alternatives and some background information see [below](#quarto-filter-options-for-argdown-filter)):
 
-Switch to your terminal and enter into the directory of the downloaded template^[On Windows, directory patterns use `\` and on Linux and macOS `/`.]
+Switch to your terminal and enter the directory of the downloaded template. Note that on Windows, directory patterns use `\` and on Linux and macOS `/`.
 
 ```bash
 cd directory/of/template
@@ -132,12 +134,14 @@ filters:
   - node_modules/.bin/argdown-filter
 ``` 
 
-On Windows it needs to be set to:^[See [here](https://github.com/argdown/argdown/blob/main/packages/argdown-pandoc-filter/README.md) for details.]
+On Windows it needs to be set to:
 
 ```yaml
 filters:
   - node_modules/.bin/argdown-filter.cmd
 ``` 
+
+See [here](https://github.com/argdown/argdown/blob/main/packages/argdown-pandoc-filter/README.md) for details.
 
 #### Install Inkscape
 
@@ -149,7 +153,7 @@ filters:
 
 On Windows, make sure that `inkscape` as added to the system path. Otherwise, Quarto is not able to call it.
 
-![](./img/screenshot-inkscape-install.png)
+<img src="./img/screenshot-inkscape-install.png" width=50%>
 
 
 ### 3. Add your content
@@ -184,9 +188,6 @@ See [Argdown usage](#argdown-usage) below for details about using Argdown.
 
 ### 4. Render the document
 
-
-## Background Information & Alternative Installation Setups
-
 ## Customization
 
 -> Link to Quarto docs
@@ -201,7 +202,7 @@ Update the filenames referenced in `assets/latex/before-body.tex` (handout heade
 
 Both are defined in `assets/latex/before-body-tex`. Adapt this template to your own needs. This template will use metadata (`author`, `email`, `date`, `organization`, `institute`, `course` and `term`) if provided by the document's YAML header and inserts it into the document header and footer.
 
-### Colours and fonts
+### Colours and Fonts
 
 - Handout font / geometry: edit `assets/latex/_handout-packages.tex`
 - Handout header colour: edit `\definecolor{handoutline}{...}` in `assets/latex/before-body.tex`
@@ -230,7 +231,7 @@ The following sections provide some background information and explain:
 5. How `syntax-definitions` and `syntax-highlighting` are forwarded to pandoc by Quarto
 
 
-### 1. Quarto filter options for `argdown-filter`
+### 1. Quarto Filter Options for `argdown-filter`
 
 Quarto does not automatically search your active `nvm`-managed Node environment when a filter entry is resolved in the project config. In practice, a bare filter name such as `argdown-filter` is interpreted as a local executable path relative to the project, not as a shell command discovered via `PATH`.
 
@@ -313,7 +314,7 @@ Cons:
 
 For most projects, a project-local dependency under `node_modules/.bin` is the cleanest long-term solution. The wrapper is a practical choice when the project intentionally relies on a specific `nvm`-managed toolchain.
 
-### 2. How the filter reads YAML metadata
+### 2. How the Filter Reads YAML Metadata
 
 The `@argdown/pandoc-filter` reads the `argdown:` key from the *document* YAML header, but **only flat string values** are parsed (type `MetaInlines`). Nested objects (type `MetaMap`) are silently ignored (at least, with `argdown<=1.8.1`).
 
@@ -396,7 +397,7 @@ The filter auto-discovers `argdown.config.json` in the working directory. Placin
 **Pro:** no `config:` path needed.  
 **Con:** if you have multiple render subdirectories, each needs its own copy (or symlink).
 
-### 3. Rendering to PDF: `mode: inline` required
+### 3. Rendering to PDF: `mode: inline` Required
 
 If you intend to also generate HTML output based on your Quarto file the use of Argdown web-components might create some problems:
 
@@ -436,7 +437,7 @@ argdown:
 - Quarto merges format-specific metadata into the top-level keys when rendering a specific format, so `format.html.argdown:` overrides the top-level `argdown:` for HTML output.
 - `argdown` (source) blocks with `sourceHighlighter: web-component` are also dropped silently in PDF. They are simply omitted from the PDF output (no fallback plain-text rendering).
 
-### 4. Why `-shell-escape` is required for Quarto PDF
+### 4. Rendering to PDF: `-shell-escape` Required
 
 Direct `pandoc -t pdf` and `quarto render` handle SVG data URIs differently:
 
@@ -465,7 +466,7 @@ Documents without any argdown-map blocks are unaffected by this setting.
 
 For further background, see <https://quarto.org/docs/output-formats/pdf-basics.html#svg-images>.
 
-### 5. Highlighting argdown code blocks
+### 5. Highlighting Argdown Code Blocks
 
 When `argdown` source blocks are rendered as plain code blocks (i.e. not via the web-component), pandoc uses its built-in syntax highlighting. By default, pandoc does not know the argdown language, so the block is rendered without highlighting. A syntax definition file (`.xml`) and optionally a highlight theme (`.theme`) are needed.
 
