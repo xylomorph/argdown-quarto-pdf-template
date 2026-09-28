@@ -97,7 +97,7 @@ nvm use lts/krypton
 
 This works with both the Windows and the Linux/macOS version of `nvm`.
 
-Once `node.js` is installed (and active), you can install all needed Argdown packages. I recommend installing them locally as project dependencies (for alternatives and some background information, see [below](#quarto-filter-options)):
+Once `node.js` is installed (and active), you can install all needed Argdown packages. I recommend installing them locally as project dependencies (for alternatives and some background information, see [below](#1-quarto-filter-options-for-argdown-filter)):
 
 Switch to your terminal and navigate to the directory containing the downloaded template. Note that on Windows, directory patterns use `\` and on Linux and macOS `/`.
 
@@ -121,7 +121,7 @@ This installs the dependencies defined in `package.json` into `./node_modules`, 
 > **Using globally installed Argdown**
 >
 > You can also install all node dependencies globally by using the `-g` flag with `npm install -g <pkg_name>`. However, currently the Quarto files are configured to use a locally installed filter. The path
-> is specified in the respective YAML file headers. Additionally, Quarto might have trouble detecting a globally installed Argdown Pandoc-Filter. Hence, you might have to specify its full path or use a wrapper script (see [below](#quarto-filter-options-for-argdown-filter) for more details).
+> is specified in the respective YAML file headers. Additionally, Quarto might have trouble detecting a globally installed Argdown Pandoc-Filter. Hence, you might have to specify its full path or use a wrapper script (see [below](#1-quarto-filter-options-for-argdown-filter) for more details).
 
 #### Specifying the Location of the Argdown Pandoc-Filter
 
@@ -184,7 +184,6 @@ or argument maps
 
 For further details about [Quarto-Markdown](https://quarto.org/docs/authoring/markdown-basics.html) and [Argdown](https://argdown.org/syntax/) syntax, please visit their websites.
 
-See [Argdown usage](#argdown-usage) below for details about using Argdown.
 
 ### 4. Render the document
 
@@ -231,7 +230,7 @@ The following sections provide some background information and explain:
 5. How `syntax-definitions` and `syntax-highlighting` are forwarded to pandoc by Quarto
 
 
-### 1. Quarto Filter Options for `argdown-filter` {#quarto-filter-options}
+### 1. Quarto Filter Options for `argdown-filter`
 
 Quarto does not automatically search your active `nvm`-managed Node environment when a filter entry is resolved in the project config. In practice, a bare filter name such as `argdown-filter` is interpreted as a local executable path relative to the project, rather than a shell command found via `PATH`.
 
