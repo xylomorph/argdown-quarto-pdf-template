@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "node-gyp":"",
+    "node-addon-api":"",
+    "@argdown/cli": "",
+    "@argdown/image-export": "",
+    "@argdown/pandoc-filter": ""
+  }
+}
