@@ -1,0 +1,40 @@
+project:
+  type: default
+
+# bibliography: assets/pkm_bc.bib
+# reference-section-title: "Literature"
+
+# TODO: Critically check which path I have to resolve as abs path
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    #pdf-engine: xelatex
+    fig-align: center
+    # keep-tex: true
+    syntax-definitions:
+      - assets/pandoc/argdown.xml
+    syntax-highlighting: assets/pandoc/argdown.theme
+    # Required for the LaTeX svg package to call Inkscape when converting
+    # inline SVG images produced by the argdown-filter (mode: inline, format: svg).
+    pdf-engine-opt: "-shell-escape" # 
+    include-in-header: assets/latex/_handout-packages.tex
+    template-partials:
+      - assets/latex/before-body.tex
+
+filters:
+  # - scripts/argdown-filter-wrapper # with wrapper script
+  - node_modules/.bin/argdown-filter # On Linux/macOS
+  # - node_modules/.bin/argdown-filter.cmd # On Windows
+
+argdown:
+  mode: inline
+  format: svg
+  config: assets/argdown.config.json
+
+bibliography: assets/references.bib
+# biblio-title: Literature
+reference-section-title: "Literature"
+
+execute:
+  freeze: auto
