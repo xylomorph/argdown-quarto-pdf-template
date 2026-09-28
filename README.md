@@ -16,8 +16,7 @@ A GitHub template to create Quarto-based PDF documents with [Argdown](https://ar
 - **Handouts & notes** — PDF output with custom header/footer via LaTeX partials
 - **Argdown integration** — argument maps and highlighted source blocks in PDF outputs (inline SVG)
 - **Argdown syntax highlighting** in PDF via a custom `.xml` syntax definition and `.theme` file
-- **Custom annotation CSS** — `.ann-premise`, `.ann-conclusion`, `.ann-key`, `.ann-doubt`, `.ann-marginal` span classes for slide markup
-
+- **Semantic annotation spans** — `.ann-premise`, `.ann-conclusion`, `.ann-key` classes for span annotation.
 
 ## Getting Started
 
@@ -183,6 +182,23 @@ or argument maps
 ````
 
 For further details about [Quarto-Markdown](https://quarto.org/docs/authoring/markdown-basics.html) and [Argdown](https://argdown.org/syntax/) syntax, please visit their websites.
+
+#### Semantic annotation spans in HTML and PDF
+
+You can annotate inline text in Quarto markdown using Pandoc span classes:
+
+```markdown
+[First premise]{.ann-premise} supports [the conclusion]{.ann-conclusion} and marks a [key point]{.ann-key}.
+```
+
+- In **HTML**, these classes are available for CSS-based styling.
+- In **PDF**, the Lua filter `scripts/annotation-spans-pdf.lua` maps these classes to LaTeX macros.
+
+Currently mapped classes for PDF output:
+
+- `.ann-premise`
+- `.ann-conclusion`
+- `.ann-key`
 
 
 ### 4. Render the document

@@ -26,6 +26,7 @@ filters:
   # - scripts/argdown-filter-wrapper # with wrapper script
   - node_modules/.bin/argdown-filter # On Linux/macOS
   # - node_modules/.bin/argdown-filter.cmd # On Windows
+  - scripts/annotation-spans-pdf.lua
 
 argdown:
   mode: inline

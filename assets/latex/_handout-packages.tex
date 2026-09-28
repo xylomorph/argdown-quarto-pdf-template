@@ -40,6 +40,16 @@
   \fi
 }
 \makeatother
+
+% Semantic annotation styles for span classes mapped by lua filter
+\usepackage{soul}
+\definecolor{annpremisebg}{HTML}{EAF4FF}
+\definecolor{annconclusionbg}{HTML}{FFF4DE}
+\definecolor{annkeybg}{HTML}{E9F8EE}
+\newcommand{\annpremise}[1]{\begingroup\sethlcolor{annpremisebg}\hl{#1}\endgroup}
+\newcommand{\annconclusion}[1]{\begingroup\sethlcolor{annconclusionbg}\hl{#1}\endgroup}
+\newcommand{\annkey}[1]{\begingroup\sethlcolor{annkeybg}\hl{\textbf{#1}}\endgroup}
+
 \newlength{\handoutlogooffset}
 \AtBeginDocument{%
   \newlength{\handoutcapht}%
