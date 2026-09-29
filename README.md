@@ -16,7 +16,7 @@ A GitHub template to create Quarto-based PDF documents with [Argdown](https://ar
 - **Handouts & notes** — PDF output with custom header/footer via LaTeX partials
 - **Argdown integration** — argument maps and highlighted source blocks in PDF outputs (inline SVG)
 - **Argdown syntax highlighting** in PDF via a custom `.xml` syntax definition and `.theme` file
-- **Semantic annotation spans** — `.ann-premise`, `.ann-conclusion`, `.ann-key` classes for span annotation.
+- **Semantic annotation spans** — `.ann-premise`, `.ann-conclusion`, `.ann-key` classes for span annotation (markup).
 
 ## Getting Started
 
