@@ -205,11 +205,9 @@ Currently mapped classes for PDF output:
 
 ## Customization
 
--> Link to Quarto docs
-
 ### Logos
 
-Replace the placeholder image `logo.png` in `assets/images/`.
+Replace or remove the placeholder image `logo.png` in `assets/images/`.
 
 Update the filenames referenced in `assets/latex/before-body.tex` (handout header, `\includegraphics{...}`)
 
