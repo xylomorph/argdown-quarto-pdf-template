@@ -38,14 +38,14 @@ sed diam voluptua. #pro
 
 (1) At vero eos et accusam et justo duo dolores et ea rebum.
     // ∀xy: Mx.Sxy → Gy
-    // Mx: x ist Mensch
-    // Sxy: x strebt y an
-    // Gy: y ist "das" Gute
+    // Mx: x et ea rebum
+    // Sxy: x eos et y
+    // Gy: y duo dolores
 (2) Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
 	sit amet.
     // ∀xyz: Mx.Sxy.Ezy → Ryz
-    // Ryz: y ist auf z hingerichtet
-    // Ezy: z ist der Erfüllung von y
+    // Ryz: y est Lorem ipsum dolor z
+    // Ezy: z clita kasd y
 -- from 1-3 with logical magic --
 (5) Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 	eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
