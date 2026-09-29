@@ -4,12 +4,13 @@
   <p align="center">
   📝 <a href="https://github.com/xylomorph/argdown-quarto-pdf-template/blob/main/example-doc.qmd">Example Quarto File</a>
   📄 <a href="https://github.com/xylomorph/argdown-quarto-pdf-template/blob/main/example-doc.pdf">Generated Example PDF Output</a>
-  🗒️ <a href="https://sebastiancacean.de/quarto-course-template">Background & Motivation (Blog Post)</a>
+  <!--🗒️ <a href="https://sebastiancacean.de/quarto-course-template">Background & Motivation (Blog Post)</a>-->
  </p>
 </div>
 <br/>
 
-A GitHub template to create Quarto-based PDF documents with [Argdown](https://argdown.org/) source blocks. (to revise)
+<!-- ToDo: update -->
+A GitHub template to create Quarto-based PDF documents with [Argdown](https://argdown.org/) source blocks.
 
 ## Features
 
