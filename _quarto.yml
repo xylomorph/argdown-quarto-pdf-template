@@ -1,10 +1,7 @@
 project:
   type: default
 
-# bibliography: assets/pkm_bc.bib
-# reference-section-title: "Literature"
 
-# TODO: Critically check which path I have to resolve as abs path
 format:
   pdf:
     documentclass: article
